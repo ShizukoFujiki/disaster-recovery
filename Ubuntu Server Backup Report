@@ -1,0 +1,73 @@
+# Ubuntu Server Backup Report
+**Date:** October 15, 2026  
+**Server:** `hymecymeyseh`  
+**Backup method:** Clonezilla disk-image backup  
+**Destination:** Seagate external drive (approximately 1.8 TB)  
+**Status:** **Backup incomplete — corrective action required**
+
+## 1. Summary
+
+An attempt was made to create a full-disk image of the Ubuntu server's internal Apple SSD, approximately 113 GB, using Clonezilla.
+
+Clonezilla successfully saved some disk metadata and two partition images. However, it **failed to back up the main Ubuntu logical volume**, which contains the operating system and most of its files.
+
+As a result, the backup image is incomplete and must not be considered a reliable, restorable full-system backup.
+
+This failure does not, by itself, indicate that server data has been lost. The available evidence points to a filesystem consistency issue that must be investigated.
+
+## 2. Findings
+
+### What completed successfully
+
+- Clonezilla created a backup image directory named `hymecymeyseh-ubuntu-full-2026-10-15-18-img`.
+- Disk partition information and GPT/MBR metadata were saved.
+- Image files for two partitions were created.
+- The volume group configuration for `ubuntu-vg` was saved.
+- Clonezilla reached the end of the disk-save operation and flushed pending filesystem writes.
+
+### What failed
+
+Clonezilla attempted to save the logical volume:
+
+`/dev/ubuntu-vg/ubuntu-lv`
+
+The error report included the following messages:
+
+- `needs journal recovery`
+- `bitmap free count err`
+- `Please run fsck to check and repair the file system`
+- `Failed to save partition /dev/ubuntu-vg/ubuntu-lv`
+
+The `bitmap free count err` message indicates that the filesystem's recorded free-block information does not match the count calculated by Clonezilla's ext4 processing tool. The log also indicates that journal recovery may be needed.
+
+Because the logical volume was not saved successfully, the image is missing a critical component of the Ubuntu installation.
+
+## 3. Impact and risk
+
+- **Server availability:** No outage or data loss has been established by this backup failure alone.
+- **Backup protection:** A verified, complete system image has not yet been obtained.
+- **Recovery readiness:** The current image must not be relied upon for full-system restoration.
+- **Existing files:** The incomplete image should be retained until a successful replacement is created and checked.
+
+## 4. Planned corrective actions
+
+1. Shut down Clonezilla cleanly and boot the server into its normal Ubuntu environment.
+2. Assess the filesystem and determine whether a consistency check and repair are required.
+3. If needed, perform the ext4 filesystem check from a suitable recovery environment while the filesystem is unmounted.
+4. Re-run Clonezilla to create a new full-disk image after addressing any filesystem issues.
+5. Review the new image's error report and run Clonezilla's image-restorability check.
+6. Confirm that the main logical volume was successfully captured before declaring the backup complete.
+
+Filesystem repair will be performed cautiously. A filesystem check should not be run against the active, mounted root filesystem.
+
+## 5. Current status
+
+**The backup attempt is incomplete.** The primary corrective action is to investigate and resolve the filesystem consistency error, then create and verify a new full-disk image.
+
+No successful full restore test has been completed, and no claim is being made that the existing image is fully recoverable.
+
+Users will be updated when the filesystem assessment is complete and a successful backup has been verified.
+
+---
+
+*Prepared from the Clonezilla console output and the saved image's `saving-error` report on October 15, 2026.*
