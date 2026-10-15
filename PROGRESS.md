@@ -117,3 +117,13 @@ use the explicit sftp.command option above. Do not restore to / for testing.
 
 Oracle is the first destination, not the only planned recovery copy. Account/VM
 reclamation remains a reason to arrange an independent copy.
+
+## Next session agreement
+
+Paused at the user's request on October 15, 2026; resume tomorrow.
+Add a second independent cloud backup provider alongside Oracle, retaining Oracle.
+No second provider has been selected or configured. At the next session compare
+current storage, retrieval and minimum charges, Restic support, and recovery access
+before choosing. Continue the pending production backup and restore work above.
+Documentation is published in the private ShizukoFujiki/disaster-recovery GitHub
+repository; passwords and private keys are not included.
