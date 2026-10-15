@@ -27,7 +27,7 @@ Review command errors and inaccessible paths; a partial inventory is not complet
 
 Based on the repository's October 13 recovery proposal, include MediaSpace media,
 catalog, configuration, source and unpublished work; Jellyfin configuration and
-databases; torrent and download-client state; mail state; relevant home directories;
+databases; mail state; relevant home directories;
 and system reconstruction information. Exclude Jellyfin movie/video library files.
 This exclusion must be checked against actual library paths, including other disks.
 
@@ -48,3 +48,10 @@ Use Oracle only as the first backup destination: free-account inactivity and VM
 reclamation remain limitations. A file restore test can run in a separate local
 directory; full application recovery needs an isolated compatible VM, which can
 be in the cloud. Do not start restored production mail or network identities.
+
+## Back up your own account
+
+See [USER-BACKUPS.md](USER-BACKUPS.md) for user-owned backups, destination
+setup prerequisites, and restore verification. Each user backs up their own home;
+an administrator separately covers protected system and service data.
+Torrent/download state is outside the current scope because it is not configured.
