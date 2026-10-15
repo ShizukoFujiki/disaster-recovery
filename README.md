@@ -8,6 +8,14 @@ See [RECOVERY.md](RECOVERY.md) for accessing the test backup from a replacement
 computer. Keep this documentation repository private; store recovery secrets
 separately in an independently accessible password manager or offline storage.
 
+## Current local image backup handoff
+
+The Clonezilla boot USB is ready. The next step is to boot the Intel MacBook Pro
+and save its internal SSD as an image on the attached Seagate drive, which has
+approximately 484 GB free. No full-disk image has been created yet.
+See [CLONEZILLA-HANDOFF.md](CLONEZILLA-HANDOFF.md) for the Windows browser
+handoff, drive identification, boot steps and save-image verification procedure.
+
 ## Collect the inventory
 
 Run from an administrator terminal on the actual Ubuntu host:
