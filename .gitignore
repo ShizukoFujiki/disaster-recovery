@@ -1,0 +1,6 @@
+*
+!.gitignore
+!README.md
+!PROGRESS.md
+!RECOVERY.md
+!inventory.py
