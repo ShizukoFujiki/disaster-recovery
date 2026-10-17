@@ -2,9 +2,13 @@
 
 ## Current protection level
 
-Only the Ubuntu devOps home directory has a test snapshot. MediaSpace, Jellyfin,
-mail, other users and system reconstruction are NOT backed up yet. This guide
-does not establish full server recovery. See PROGRESS.md for completed steps.
+The disk image now has a verified encrypted Google Drive copy and a separate
+MEMOREX USB recovery kit. Follow [VM-RECOVERY-HANDOFF.md](VM-RECOVERY-HANDOFF.md)
+for the planned isolated Windows VM recovery test. The image capture's full
+restorability and application consistency are not yet established.
+
+The Oracle instructions below concern the earlier devOps-only Restic test snapshot,
+not the disk image. They do not establish complete server recovery.
 
 ## Keep these independently accessible
 
@@ -15,7 +19,7 @@ the Oracle account login, MFA recovery method, and GitHub recovery method there
 too. Do not depend solely on the lost Ubuntu server or Windows machine for MFA.
 Do not upload private keys, passwords, .env files, or live inventory reports here.
 
-## Recover the test snapshot
+## Recover the earlier Oracle test snapshot
 
 1. Sign into GitHub from a trusted replacement computer and read this repository.
 2. Retrieve the repository password and SSH key from independent storage. Their
@@ -35,10 +39,11 @@ channel before accepting a new host key. A trusted fingerprint was not recorded
 in this documentation. Then check the destination disk:
 
 ```bash
-ssh -i ~/oracle-recovery.key backup@129.159.187.123 'findmnt -T /backup/restic'
+ssh -i ~/oracle-recovery.key opc@129.159.187.123 'findmnt -T /backup/restic'
 ```
 
-It must show the separate backup filesystem mounted at /backup, not the root
+The backup login permits SFTP only; use the administrator login opc for this
+read-only mount check. It must show the separate backup filesystem mounted at /backup, not the root
 filesystem. Recorded UUID: d57c8986-a51b-4bfb-82f3-f7c6754b88df.
 
 Set these variables in the recovery terminal. Replace the IP if Oracle changed it:
