@@ -1,6 +1,12 @@
 # Recovery preparation
 
-Status updated October 15, 2026: Oracle backup storage and an encrypted Restic
+Current handoff updated October 17, 2026: the local compressed disk image passed
+compression integrity checking, but Google Drive image uploads failed at OAuth
+refresh. Run the saved Python refresh-test script before retrying. See
+[GOOGLE-DRIVE-BACKUP.md](GOOGLE-DRIVE-BACKUP.md) for status and instructions.
+No complete offsite disk image or full system restore has been verified.
+
+Earlier status, October 15, 2026: Oracle backup storage and an encrypted Restic
 repository have been created. A test backup of /home/devOps and an isolated file
 restore comparison succeeded. Production application backups are not configured.
 See [PROGRESS.md](PROGRESS.md) for the session record and remaining work.
@@ -10,11 +16,13 @@ separately in an independently accessible password manager or offline storage.
 
 ## Current local image backup handoff
 
-The Clonezilla boot USB is ready. The next step is to boot the Intel MacBook Pro
-and save its internal SSD as an image on the attached Seagate drive, which has
-approximately 484 GB free. No full-disk image has been created yet.
-See [CLONEZILLA-HANDOFF.md](CLONEZILLA-HANDOFF.md) for the Windows browser
-handoff, drive identification, boot steps and save-image verification procedure.
+The original Clonezilla attempt failed to capture the main Ubuntu logical volume;
+see [Ubuntu Server Backup Report](Ubuntu%20Server%20Backup%20Report).
+A separate ubuntu-disk.img and compressed ubuntu-disk.img.zst now exist on the
+Seagate. Their source capture and full restorability remain to be validated.
+The compressed stream passed zstd verification. Current cloud upload troubleshooting
+is in [GOOGLE-DRIVE-BACKUP.md](GOOGLE-DRIVE-BACKUP.md).
+[CLONEZILLA-HANDOFF.md](CLONEZILLA-HANDOFF.md) describes the earlier boot procedure.
 
 ## Collect the inventory
 
