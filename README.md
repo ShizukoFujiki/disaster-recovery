@@ -1,10 +1,13 @@
 # Recovery preparation
 
-Current handoff updated October 17, 2026: the local compressed disk image passed
-compression integrity checking, but Google Drive image uploads failed at OAuth
-refresh. Run the saved Python refresh-test script before retrying. See
-[GOOGLE-DRIVE-BACKUP.md](GOOGLE-DRIVE-BACKUP.md) for status and instructions.
-No complete offsite disk image or full system restore has been verified.
+Current handoff updated October 17, 2026: the compressed disk image was uploaded
+to Google Drive through rclone encryption and passed cryptcheck (1 matching file,
+0 differences). A verified recovery configuration/key kit is on the MEMOREX USB.
+The next step is an isolated Windows-hosted VM restore test on October 18.
+See [VM-RECOVERY-HANDOFF.md](VM-RECOVERY-HANDOFF.md) for the procedure and
+[GOOGLE-DRIVE-BACKUP.md](GOOGLE-DRIVE-BACKUP.md) for upload/authentication history.
+Full system boot and application restoration remain untested. No recurring backup
+schedule is configured. Credentials are on the recovery USB, never in this repository.
 
 Earlier status, October 15, 2026: Oracle backup storage and an encrypted Restic
 repository have been created. A test backup of /home/devOps and an isolated file
@@ -20,7 +23,7 @@ The original Clonezilla attempt failed to capture the main Ubuntu logical volume
 see [Ubuntu Server Backup Report](Ubuntu%20Server%20Backup%20Report).
 A separate ubuntu-disk.img and compressed ubuntu-disk.img.zst now exist on the
 Seagate. Their source capture and full restorability remain to be validated.
-The compressed stream passed zstd verification. Current cloud upload troubleshooting
+The compressed stream passed zstd verification. Current cloud backup history
 is in [GOOGLE-DRIVE-BACKUP.md](GOOGLE-DRIVE-BACKUP.md).
 [CLONEZILLA-HANDOFF.md](CLONEZILLA-HANDOFF.md) describes the earlier boot procedure.
 
