@@ -2,20 +2,29 @@
 
 ## October 17, 2026 — current handoff
 
-Google Drive is configured as an additional encrypted destination, but both image
-upload attempts failed during OAuth refresh. No complete offsite image is verified.
-A saved Python script now replaces fragile pasted Python snippets:
+The Google Drive disk-image upload and encrypted checksum verification SUCCEEDED.
+Final upload: 47.256 GiB, 1/1 files, 5h45m14.7s. cryptcheck: 0 differences,
+1 matching file, Checks 1/1, elapsed 11m26.8s. Full boot/application recovery is
+not yet tested.
 
-```bash
-sudo python3 /home/devOps/test-rclone-refresh.py
-```
+The saved Python token-refresh script was executed. Its first failure correctly
+identified that OAuth refresh remained broken. The user confirmed using the short
+shared-client Windows authorization command. Reconnecting with the exact long
+custom-client command, adding the account as an OAuth test user, and repeating
+authorization resolved it: forced token refresh PASSED before the final upload.
 
-The script is syntax-checked; its execution result is still pending. It backs up
-the config, expires the access token and tests refresh without starting an upload.
-See [GOOGLE-DRIVE-BACKUP.md](GOOGLE-DRIVE-BACKUP.md) and
-[test-rclone-refresh.py](test-rclone-refresh.py) for exact behavior, remaining
-authorization work, and current local image status. Preserve existing Oracle
-resources and both Seagate image files.
+A separate MEMOREX 128 USB kit contains the full rclone configuration, the
+securebackup encryption-key settings, and recovery instructions. The copy helper
+was fixed to request lsblk tree output, then user reported SUCCESS for copy and
+verification. The kit is unencrypted and must be physically protected.
+No credentials were committed.
+
+Next session, October 18: test download/decryption and raw image recovery using
+an Ubuntu live environment in VMware or VirtualBox on another Windows computer.
+Use [VM-RECOVERY-HANDOFF.md](VM-RECOVERY-HANDOFF.md). Identify the new empty
+VM disk before any destructive write and keep the restored machine offline.
+Preserve Oracle resources and both Seagate image files. Recurring backups and
+retention remain unconfigured.
 
 ## October 15, 2026 — historical record
 
