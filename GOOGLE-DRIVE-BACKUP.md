@@ -1,6 +1,15 @@
 # Google Drive backup and token refresh — October 17, 2026
 
-## Current status
+## Current status — upload verified
+
+The final upload SUCCEEDED: 47.256 GiB, 1/1 files, elapsed 5h45m14.7s.
+The subsequent cryptcheck returned 0 differences and 1 matching file in 11m26.8s.
+A MEMOREX USB recovery kit was copied and verified; it contains the full config,
+recoverable crypt settings and instructions, without encryption of the USB itself.
+Next: [Windows VM recovery handoff](VM-RECOVERY-HANDOFF.md). Boot and application
+restoration remain untested; recurring backups are not configured.
+
+## Local image and earlier troubleshooting
 
 The Seagate holds ubuntu-server-backup/ubuntu-disk.img (113 GiB) and
 ubuntu-disk.img.zst (about 47.2 GiB / 50.7 GB). The compressed file passed
@@ -22,16 +31,18 @@ rclone remotes:
 A small encrypted file upload and decrypted read succeeded. Image uploads failed
 at OAuth refresh: approximately 3.641 GiB in the first attempt and 7.383 GiB after
 55 minutes in a later attempt. The error summary showing 100% is NOT completion.
-There is no confirmed complete offsite copy of this image.
+These were earlier failed attempts; the later successful upload is recorded above.
 
 Ubuntu rclone was updated from 1.60.1-DEV to 1.75.2 using the official installer
 after selfupdate failed hash-signature verification. Windows reported 1.75.1.
 A dedicated Desktop app OAuth client was created with Google Drive API enabled.
 The gdrive remote was reconnected again after unauthorized_client errors.
-The cause is not yet established; client credentials and refresh-token association
-need to work together. Do not assume a successful small read proves token refresh.
+The user later confirmed using the short shared-client authorization command in
+Windows. The exact long custom-client command was required. After adding the
+Google account as a test user and authorizing with that command, forced token
+refresh passed and the full image upload succeeded.
 
-## Resume with the Python script
+## Python script used to diagnose token refresh
 
 Repeated multiline snippets and long one-liners failed when pasted with indentation
 or line breaks. Use a saved Python file instead of asking the user to paste Python
@@ -56,15 +67,15 @@ The script:
    timeout. It prints storage capacity or the normal rclone error, not config contents.
 5. Starts no image upload, deletion, restore, or service change.
 
-Validation so far: Python syntax checked. The user has NOT yet supplied output
-from running this saved script. Token refresh success remains unconfirmed.
+Validation: syntax checked and user-executed. Initial forced refresh failed;
+after correcting authorization, it PASSED and reported 100 GiB capacity.
 Stop other rclone jobs before running, because this test rewrites the config.
 Backups contain credentials and encryption settings: never commit or share them.
 The script uses configparser and expects this plaintext INI configuration;
 an encrypted config requires a different procedure. A failed test leaves the
 access token expired intentionally; it does not automatically restore the backup.
 
-## After successful refresh
+## Completed upload procedure (historical)
 
 Confirm the existing encrypted test file still decrypts:
 
