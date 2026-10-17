@@ -1,4 +1,23 @@
-# Backup setup progress — October 15, 2026
+# Backup setup progress
+
+## October 17, 2026 — current handoff
+
+Google Drive is configured as an additional encrypted destination, but both image
+upload attempts failed during OAuth refresh. No complete offsite image is verified.
+A saved Python script now replaces fragile pasted Python snippets:
+
+```bash
+sudo python3 /home/devOps/test-rclone-refresh.py
+```
+
+The script is syntax-checked; its execution result is still pending. It backs up
+the config, expires the access token and tests refresh without starting an upload.
+See [GOOGLE-DRIVE-BACKUP.md](GOOGLE-DRIVE-BACKUP.md) and
+[test-rclone-refresh.py](test-rclone-refresh.py) for exact behavior, remaining
+authorization work, and current local image status. Preserve existing Oracle
+resources and both Seagate image files.
+
+## October 15, 2026 — historical record
 
 This record is based on terminal output and Oracle console observations supplied
 by the user. This workspace does not provide direct access to the live servers.
