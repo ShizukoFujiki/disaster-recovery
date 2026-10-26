@@ -6,8 +6,9 @@ The final upload SUCCEEDED: 47.256 GiB, 1/1 files, elapsed 5h45m14.7s.
 The subsequent cryptcheck returned 0 differences and 1 matching file in 11m26.8s.
 A MEMOREX USB recovery kit was copied and verified; it contains the full config,
 recoverable crypt settings and instructions, without encryption of the USB itself.
-Next: [Windows VM recovery handoff](VM-RECOVERY-HANDOFF.md). Boot and application
-restoration remain untested; recurring backups are not configured.
+Physical restore and boot/login succeeded on October 26; see [October 26 physical recovery report](RECOVERY-TEST-2026-10-26.md).
+Complete application/database recovery remains unverified; recurring backups are
+not configured. The earlier Windows VM plan was not used.
 
 ## Local image and earlier troubleshooting
 
@@ -97,7 +98,8 @@ rclone copy ubuntu-disk.img.zst securebackup: -P
 
 Require a successful final exit and remote verification before declaring the image
 protected. Use cryptcheck or a downloaded decrypted hash comparison; a directory
-listing alone is not integrity verification. Full system restoration is still untested.
+listing alone is not integrity verification. Physical boot/login recovery has since succeeded; full application/database
+restoration remains unverified.
 No recurring schedule or retention policy has been configured.
 
 ## Recovery credentials and remaining work
