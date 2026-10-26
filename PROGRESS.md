@@ -1,6 +1,24 @@
 # Backup setup progress
 
-## October 17, 2026 — current handoff
+## October 26, 2026 — current handoff
+
+The Google Drive image was restored directly to a physical MacBookPro8,1 using
+SystemRescue rather than a Windows VM. The user confirmed boot and existing-user
+login; SSH, data-readability checks and a short SSD self-test followed. The restored
+hostname is sehysekaccam. Basic recovery PASSED; complete application/database
+recovery and long-term hardware reliability remain unverified.
+
+See [October 26 physical recovery report](RECOVERY-TEST-2026-10-26.md) for evidence, limitations and next steps.
+Tailscale, Cloudflare Tunnel and Postfix were stopped but remain enabled at boot;
+other copied application services/timers ran. Hostname change did not create fully
+independent identities. Shutdown was advised but has not been confirmed.
+
+Next: assess the other 500 GB laptop, compare candidates and choose roles.
+Fresh Ubuntu for permanent secondary-server use is the agreed direction after
+assessment; no reinstall, cutover or synchronization has been performed.
+Preserve existing backups, recovery USB and Windows media originals.
+
+## October 17, 2026 — historical handoff
 
 The Google Drive disk-image upload and encrypted checksum verification SUCCEEDED.
 Final upload: 47.256 GiB, 1/1 files, 5h45m14.7s. cryptcheck: 0 differences,
