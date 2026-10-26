@@ -1,6 +1,14 @@
 # Windows VM recovery test handoff — October 17, 2026
 
-## Resume here
+## Superseded plan — October 26 update
+
+The user chose physical recovery to a spare MacBook instead. Download/restoration,
+boot, existing-user login and SSH succeeded; subsequent assessments are recorded
+in [October 26 physical recovery report](RECOVERY-TEST-2026-10-26.md). No VM recovery was performed.
+Use that report for current next steps. The VM instructions below are retained as
+an alternative historical plan and must not be confused with a completed VM test.
+
+## Original resume plan
 
 The user plans to continue on October 18 using another Windows computer with
 VMware or VirtualBox. The objective is to download/decrypt the Google Drive image,
