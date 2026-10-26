@@ -1,13 +1,23 @@
 # Recovery preparation
 
-Current handoff updated October 17, 2026: the compressed disk image was uploaded
-to Google Drive through rclone encryption and passed cryptcheck (1 matching file,
-0 differences). A verified recovery configuration/key kit is on the MEMOREX USB.
-The next step is an isolated Windows-hosted VM restore test on October 18.
-See [VM-RECOVERY-HANDOFF.md](VM-RECOVERY-HANDOFF.md) for the procedure and
-[GOOGLE-DRIVE-BACKUP.md](GOOGLE-DRIVE-BACKUP.md) for upload/authentication history.
-Full system boot and application restoration remain untested. No recurring backup
-schedule is configured. Credentials are on the recovery USB, never in this repository.
+## October 26, 2026 — current handoff
+
+The Google Drive image was restored directly to a physical MacBookPro8,1 using
+SystemRescue rather than a Windows VM. The user confirmed boot and existing-user
+login; SSH, data-readability checks and a short SSD self-test followed. The restored
+hostname is sehysekaccam. Basic recovery PASSED; complete application/database
+recovery and long-term hardware reliability remain unverified.
+
+See [October 26 physical recovery report](RECOVERY-TEST-2026-10-26.md) for evidence, limitations and next steps.
+Tailscale, Cloudflare Tunnel and Postfix were stopped but remain enabled at boot;
+other copied application services/timers ran. Hostname change did not create fully
+independent identities. Shutdown was advised but has not been confirmed.
+
+Next: assess the other 500 GB laptop, compare candidates and choose roles.
+Fresh Ubuntu for permanent secondary-server use is the agreed direction after
+assessment; no reinstall, cutover or synchronization has been performed.
+Preserve existing backups, recovery USB and Windows media originals.
+
 
 Earlier status, October 15, 2026: Oracle backup storage and an encrypted Restic
 repository have been created. A test backup of /home/devOps and an isolated file
@@ -22,7 +32,8 @@ separately in an independently accessible password manager or offline storage.
 The original Clonezilla attempt failed to capture the main Ubuntu logical volume;
 see [Ubuntu Server Backup Report](Ubuntu%20Server%20Backup%20Report).
 A separate ubuntu-disk.img and compressed ubuntu-disk.img.zst now exist on the
-Seagate. Their source capture and full restorability remain to be validated.
+Seagate. Boot/login recovery on separate physical hardware has now succeeded; source capture
+consistency and complete application recovery remain to be validated.
 The compressed stream passed zstd verification. Current cloud backup history
 is in [GOOGLE-DRIVE-BACKUP.md](GOOGLE-DRIVE-BACKUP.md).
 [CLONEZILLA-HANDOFF.md](CLONEZILLA-HANDOFF.md) describes the earlier boot procedure.
@@ -60,7 +71,7 @@ consistency must be designed after inspecting application state.
 - Oracle account and VM created; backup volume attached (see progress record).
 - Independent recovery credentials and an encryption password kept off-server.
 - Reviewed backup source/exclusion list and version retention within available disk.
-- Test upload and project-file restore comparison completed; isolated application
+- Test upload and project-file restore comparison completed; complete application
   restoration remains outstanding.
 
 Use Oracle only as the first backup destination: free-account inactivity and VM
