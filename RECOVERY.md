@@ -2,10 +2,13 @@
 
 ## Current protection level
 
-The disk image now has a verified encrypted Google Drive copy and a separate
-MEMOREX USB recovery kit. Follow [VM-RECOVERY-HANDOFF.md](VM-RECOVERY-HANDOFF.md)
-for the planned isolated Windows VM recovery test. The image capture's full
-restorability and application consistency are not yet established.
+The disk image has a verified encrypted Google Drive copy and a separate MEMOREX
+USB recovery kit. Physical restoration to sehysekaccam succeeded: boot, login,
+SSH and limited data checks passed. Full application/database recovery remains
+unverified. See [October 26 physical recovery report](RECOVERY-TEST-2026-10-26.md) for the current handoff.
+
+The original [VM recovery plan](VM-RECOVERY-HANDOFF.md) remains an alternative,
+not the procedure used in the completed physical test.
 
 The Oracle instructions below concern the earlier devOps-only Restic test snapshot,
 not the disk image. They do not establish complete server recovery.
