@@ -2,26 +2,27 @@
 
 Date: 2026-11-10
 
-This is a sanitized status report based on the two read-only preflights and the
-November 7 live metadata review. Exact source paths and identity details remain
-in the protected operations record. No production capture or cutover is approved.
+This is a sanitized status report based on the two read-only preflights, the
+November 7 live metadata review, and the November 10 destination checks. Exact
+source paths and identity details remain in the protected operations record.
+No production capture or cutover is approved.
 
 ## 1. Encrypted destination: listing, capacity, and write access
 
-**Current read-only status: listing and quota pass; write access remains untested.**
-The first preflight did not identify a usable destination configuration. The
-follow-up listing failed and its preflight withheld raw diagnostics, so the cause
-of that earlier failure is unknown. A later sanitized check succeeded using a
-temporary copy of the existing configuration: the remote listing returned two
-top-level entries (names withheld), and reported 100 GiB total, about 52 GiB free,
-and about 48 GiB used. Any OAuth refresh occurred only in the temporary copy.
+**Current status: listing, quota, canary write/read, and cleanup pass.** The first
+preflight did not identify a usable destination configuration. A follow-up
+listing failed and its preflight withheld raw diagnostics, so the cause of that
+earlier failure remains unknown. A later sanitized check using a temporary copy
+of the existing configuration succeeded: the remote listing returned two
+top-level entries (names withheld), and reported 100 GiB total, about 52 GiB
+free, and about 48 GiB used. Any OAuth refresh occurred only in the temporary
+copy.
 
-No remote write/canary test has been performed, so write access is not confirmed.
-Do not infer it from an earlier upload or token-refresh test.
-
-Next: after review, perform a separately authorized, uniquely named encrypted
-canary write/read/delete and verify cleanup. Record the result without publishing
-object names or credentials.
+A separate check then wrote one uniquely named 32-byte encrypted canary, read
+back matching bytes, and deleted it successfully. No canary object remains from
+that check. This confirms current write/read/delete access; it does not establish
+retention behavior or restore-key recoverability. Credentials and object names
+are withheld.
 
 ## 2. Independent recovery key
 
@@ -77,8 +78,7 @@ or a one-mailbox cutover rollback. It is not sufficient rollback evidence.
 
 ## Decision
 
-Keep production capture and cutover on hold. Required next evidence is: a
-successful current remote listing/quota check; confirmed canary write/read and
-cleanup; independent-key restore; defined retention; refreshed private source and
-writer inventory; an arrival reconciliation plan; and a rehearsed isolated restore
-and rollback.
+Keep production capture and cutover on hold. Remote listing, capacity, and
+canary write/read/delete are now confirmed. Remaining gates are independent-key
+restore, defined retention, refreshed private source and writer inventory, an
+arrival reconciliation plan, and a rehearsed isolated restore and rollback.
