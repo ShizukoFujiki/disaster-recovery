@@ -8,20 +8,20 @@ in the protected operations record. No production capture or cutover is approved
 
 ## 1. Encrypted destination: listing, capacity, and write access
 
-**Status: unresolved.** The first preflight did not identify a usable destination
-configuration. The follow-up found an encrypted destination configuration, but
-the remote listing failed. The preflight intentionally withheld raw diagnostics,
-so the failure cause is unknown. There is no later successful listing recorded.
+**Current read-only status: listing and quota pass; write access remains untested.**
+The first preflight did not identify a usable destination configuration. The
+follow-up listing failed and its preflight withheld raw diagnostics, so the cause
+of that earlier failure is unknown. A later sanitized check succeeded using a
+temporary copy of the existing configuration: the remote listing returned two
+top-level entries (names withheld), and reported 100 GiB total, about 52 GiB free,
+and about 48 GiB used. Any OAuth refresh occurred only in the temporary copy.
 
-The follow-up did not return remote quota/capacity. Its local staging-space check
-passed, which says nothing about capacity at the remote destination. No remote
-write/canary test has been performed. Do not infer write access from an earlier
-upload or token-refresh test.
+No remote write/canary test has been performed, so write access is not confirmed.
+Do not infer it from an earlier upload or token-refresh test.
 
-Next: rerun a sanitized read-only listing and quota check, preserving only an
-error category/status code, not raw diagnostics. After that succeeds, perform a
-separately authorized, uniquely named encrypted canary write/read/delete and
-verify cleanup. Record the current destination capacity and result.
+Next: after review, perform a separately authorized, uniquely named encrypted
+canary write/read/delete and verify cleanup. Record the result without publishing
+object names or credentials.
 
 ## 2. Independent recovery key
 
