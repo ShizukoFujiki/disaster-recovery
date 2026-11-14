@@ -1,31 +1,39 @@
 # Mail backup review
 
-These public materials summarize two read-only preflight checks and describe
-the proposed capture and restore controls for the Mailbridge service.
+These public materials summarize two read-only preflight checks, a later
+partial encrypted Mailbridge checkpoint, and the remaining capture/restore
+controls. See [GATE-STATUS-2026-11-14.md](GATE-STATUS-2026-11-14.md) for the
+latest sanitized gate status.
 
 ## Files
 
+- [GATE-STATUS-2026-11-10.md](GATE-STATUS-2026-11-10.md) — status at the time
+  of the preflight and remote-canary checks.
+- [GATE-STATUS-2026-11-14.md](GATE-STATUS-2026-11-14.md) — adds verified
+  November 8 checkpoint and restore evidence, current phone-access observations,
+  and remaining gates.
 - reports/preflight-kg5vzidm-summary.md — first preflight result and blockers.
 - reports/preflight-mn8ef7pr-summary.md — follow-up preflight result and blockers.
 - SOURCE-MAP.md — sanitized description of the component categories examined.
-- BACKUP-PLAN.md — scope and prerequisites; draft, not an approved backup job.
+- BACKUP-PLAN.md — scope and prerequisites; draft, not an approved recurring job.
 - CAPTURE-PROCEDURE.md — controlled capture checklist; not an executable runner.
-- RESTORE-PROCEDURE.md — isolated recovery checklist; not yet validated against
-  a complete live mail backup.
+- RESTORE-PROCEDURE.md — isolated recovery checklist; not yet validated as a
+  complete independent-key production-mail restore.
 
 The original JSON reports and source mapper were withheld because they contain
 private filesystem paths, account identifiers, service configuration details,
-runtime metadata, and code provenance. The sanitized summaries retain only
-results and blockers. No credentials, tokens, message content, key material,
-raw inventories, server addresses, or private paths are included.
+runtime metadata, and code provenance. The sanitized summaries retain results
+and blockers only. No credentials, tokens, message content, key material, raw
+inventories, archive hashes, server addresses, or private paths are included.
 
 ## Current conclusion
 
-Both preflights passed their local space-headroom gate at the time they ran.
-Neither created a backup or a consistent snapshot. The follow-up could not
-successfully list the encrypted remote destination. Restore-key recovery,
-remote write access, retention, protection of arrivals during maintenance,
-all-writer coordination, and crash-safe service recovery remain unverified.
+The preflights themselves did not create a backup. A later, partial encrypted
+mail checkpoint was captured, uploaded, and read back successfully. A private
+local restore and isolated legacy-application check also passed their stated
+scope. These results do not prove independent recovery-key access, retention,
+complete source coverage, upstream receipt recovery, post-checkpoint arrival
+protection, or a full mail cutover rollback.
 
-Do not treat these checks as a completed backup or as authorization for a
-production cutover.
+Keep production capture, DNS/public-listener changes and mailbox cutover on hold
+until the remaining gates in the latest status report are verified.
