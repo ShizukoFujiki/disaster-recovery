@@ -10,8 +10,8 @@ latest sanitized gate status.
 - [GATE-STATUS-2026-11-10.md](GATE-STATUS-2026-11-10.md) — status at the time
   of the preflight and remote-canary checks.
 - [GATE-STATUS-2026-11-14.md](GATE-STATUS-2026-11-14.md) — adds verified
-  November 8 checkpoint and restore evidence, current phone-access observations,
-  and remaining gates.
+  November 8 checkpoint, historical recovery-kit restore evidence, current
+  phone-access observations, and remaining gates.
 - reports/preflight-kg5vzidm-summary.md — first preflight result and blockers.
 - reports/preflight-mn8ef7pr-summary.md — follow-up preflight result and blockers.
 - SOURCE-MAP.md — sanitized description of the component categories examined.
@@ -31,9 +31,13 @@ inventories, archive hashes, server addresses, or private paths are included.
 The preflights themselves did not create a backup. A later, partial encrypted
 mail checkpoint was captured, uploaded, and read back successfully. A private
 local restore and isolated legacy-application check also passed their stated
-scope. These results do not prove independent recovery-key access, retention,
-complete source coverage, upstream receipt recovery, post-checkpoint arrival
-protection, or a full mail cutover rollback.
+scope. Historical recovery records document a prior encrypted disk-image restore
+using recovery material stored separately on removable media; that material was
+reported unencrypted. The current kit has not been revalidated, and the November
+8 mail checkpoint has not been restored using it.
 
-Keep production capture, DNS/public-listener changes and mailbox cutover on hold
-until the remaining gates in the latest status report are verified.
+Retention, complete source coverage, upstream receipt recovery,
+post-checkpoint arrival protection, and a full mail cutover rollback remain
+unverified. Keep production capture, DNS/public-listener changes and mailbox
+cutover on hold until the remaining gates in the latest status report are
+verified.
