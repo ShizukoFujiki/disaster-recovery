@@ -32,11 +32,11 @@ writer inventory still has unresolved paths and writers. No upstream archive,
 envelope, or receipt snapshot was captured. The checkpoint does not prove
 protection or reconciliation of arrivals after its checkpoint boundary. The
 application test restored from the local checkpoint; it was not an application
-restore using an independently retrieved recovery key and the remote archive.
-Dovecot/standard-client migration and one-mailbox cutover rollback were not
-tested.
+restore using an independently retrieved recovery key and the remote mail
+checkpoint. Dovecot/standard-client migration and one-mailbox cutover rollback
+were not tested.
 
-## Encrypted destination
+## Encrypted destination and recovery material
 
 Current read-only quota/listing checks passed: 100 GiB total, about 52 GiB free,
 about 48 GiB used; the listing returned two top-level entries with names
@@ -44,9 +44,16 @@ withheld. A separate unique encrypted canary write, matching read-back, and
 cleanup passed. The November 8 mail archive upload and downloaded-content
 comparison also passed using the existing encrypted-remote configuration.
 
-The cause of an earlier failed listing remains unknown. The independent recovery
-key has not been used from a separate recovery kit or computer to restore the
-remote archive.
+The cause of an earlier failed listing remains unknown.
+
+**Historical recovery evidence exists:** an October 26 report records that the
+encrypted remote's prior full-disk image was restored on a separate physical
+computer, and that the rclone/crypt recovery configuration was stored on separate
+removable media. That recovery configuration was recorded as unencrypted. This
+demonstrates a historical restore of a prior object using separately stored
+recovery material; it does not confirm the recovery kit is currently available
+and readable, or that the November 8 mail checkpoint has been restored using
+that kit. Keep the kit protected and do not publish its identity or contents.
 
 ## Retention and future arrivals
 
@@ -72,9 +79,10 @@ present. No router, DNS, firewall, or live mail-service changes were made.
 ## Decision
 
 Keep production capture, public listener activation, DNS changes and mailbox
-cutover on hold. Remaining backup gates are independent-key remote restore,
-defined/tested retention, a complete current source/writer inventory,
-post-checkpoint arrival protection and reconciliation, and a full paired restore
-and one-mailbox rollback rehearsal. Phone access additionally requires ISP
+cutover on hold. Remaining backup gates are: revalidate current access to the
+separate recovery kit and restore the November 8 mail checkpoint with it; define
+and test retention; complete the current source/writer inventory; demonstrate
+post-checkpoint arrival protection and reconciliation; and rehearse a full
+paired restore and one-mailbox rollback. Phone access additionally requires ISP
 address/port confirmation, trusted certificate ownership and a reviewed service
 plan.
