@@ -59,6 +59,8 @@ that kit. Keep the kit protected and do not publish its identity or contents.
 
 **Retention remains unverified.** No recurring capture schedule, remote retention
 or lifecycle policy, or failure monitoring was established by the checkpoint.
+A read-only inventory of current system-level timers on November 14 found no
+Mailbridge backup job. Per-user timers and cron schedules have not been verified.
 
 The local capture paused known writers and resumed them, but no corresponding
 upstream archive/receipt snapshot or verified preservation/reconciliation of
