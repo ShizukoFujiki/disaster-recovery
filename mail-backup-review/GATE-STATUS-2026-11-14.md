@@ -46,14 +46,16 @@ comparison also passed using the existing encrypted-remote configuration.
 
 The cause of an earlier failed listing remains unknown.
 
-**Historical recovery evidence exists:** an October 26 report records that the
-encrypted remote's prior full-disk image was restored on a separate physical
-computer, and that the rclone/crypt recovery configuration was stored on separate
-removable media. That recovery configuration was recorded as unencrypted. This
-demonstrates a historical restore of a prior object using separately stored
-recovery material; it does not confirm the recovery kit is currently available
-and readable, or that the November 8 mail checkpoint has been restored using
-that kit. Keep the kit protected and do not publish its identity or contents.
+**Historical recovery evidence is incomplete:** an October 26 report separately
+records a successful restore of a prior encrypted full-disk image to another
+computer and records recovery configuration on separate removable media. The
+available report does not include a transcript proving that this particular
+recovery configuration was used for that restore. The configuration was
+recorded as unencrypted. Thus separate storage is documented, but an independent
+key's use in a restore is not conclusively demonstrated. The media's current
+availability/readability and restoration of the November 8 mail checkpoint using
+it remain unverified. Keep the media protected and do not publish its identity or
+contents.
 
 ## Retention and future arrivals
 
@@ -81,10 +83,10 @@ present. No router, DNS, firewall, or live mail-service changes were made.
 ## Decision
 
 Keep production capture, public listener activation, DNS changes and mailbox
-cutover on hold. Remaining backup gates are: revalidate current access to the
-separate recovery kit and restore the November 8 mail checkpoint with it; define
-and test retention; complete the current source/writer inventory; demonstrate
-post-checkpoint arrival protection and reconciliation; and rehearse a full
-paired restore and one-mailbox rollback. Phone access additionally requires ISP
-address/port confirmation, trusted certificate ownership and a reviewed service
-plan.
+cutover on hold. Remaining backup gates are: confirm current access to the
+separate recovery media and demonstrate its use to restore the November 8 mail
+checkpoint; define and test retention; complete the current source/writer
+inventory; demonstrate post-checkpoint arrival protection and reconciliation;
+and rehearse a full paired restore and one-mailbox rollback. Phone access
+additionally requires ISP address/port confirmation, trusted certificate
+ownership and a reviewed service plan.
