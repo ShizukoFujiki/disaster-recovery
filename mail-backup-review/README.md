@@ -10,7 +10,7 @@ latest sanitized gate status.
 - [GATE-STATUS-2026-11-10.md](GATE-STATUS-2026-11-10.md) — status at the time
   of the preflight and remote-canary checks.
 - [GATE-STATUS-2026-11-14.md](GATE-STATUS-2026-11-14.md) — adds verified
-  November 8 checkpoint, historical recovery-kit restore evidence, current
+  November 8 checkpoint, historical recovery-media evidence, current
   phone-access observations, and remaining gates.
 - reports/preflight-kg5vzidm-summary.md — first preflight result and blockers.
 - reports/preflight-mn8ef7pr-summary.md — follow-up preflight result and blockers.
@@ -31,10 +31,11 @@ inventories, archive hashes, server addresses, or private paths are included.
 The preflights themselves did not create a backup. A later, partial encrypted
 mail checkpoint was captured, uploaded, and read back successfully. A private
 local restore and isolated legacy-application check also passed their stated
-scope. Historical recovery records document a prior encrypted disk-image restore
-using recovery material stored separately on removable media; that material was
-reported unencrypted. The current kit has not been revalidated, and the November
-8 mail checkpoint has not been restored using it.
+scope. Historical records separately document a prior encrypted disk-image
+restore and recovery configuration on removable media, but do not prove that the
+recorded media was used for that restore. The configuration was reported
+unencrypted. Current media availability and use to restore the November 8 mail
+checkpoint remain unverified.
 
 Retention, complete source coverage, upstream receipt recovery,
 post-checkpoint arrival protection, and a full mail cutover rollback remain
