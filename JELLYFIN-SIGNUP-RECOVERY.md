@@ -3,7 +3,8 @@
 ## Backup destinations
 
 - **Google Drive** holds the encrypted server image for whole-server recovery.
-- **A separate computer** will receive the automated encrypted Jellyfin signup backups. The owner will allocate dedicated disk space on that computer, then use cron and custom scripts to run nightly incremental backups. The host, destination path, and disk allocation remain to be selected.
+- **The 500 GB Linux laptop** is the replacement Ubuntu server. Verify its disk health and test a restore before switching live traffic.
+- **The 930 GB Windows laptop** will receive the nightly encrypted incremental backups. Confirm the destination folder, free space, and overnight availability. Cron and custom scripts will run on Ubuntu and send backups to the Windows destination.
 - **Oracle** is excluded from this backup plan.
 
 Signup backup coverage and application-level recovery still need to be verified. The existing Jellyfin restore and test copies are awaiting retention review, and the authoritative recovery copy has yet to be identified.
