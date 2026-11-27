@@ -3,7 +3,7 @@
 ## Backup destinations
 
 - **Google Drive** holds the encrypted server image for whole-server recovery.
-- **The 500 GB Linux laptop** is the replacement Ubuntu server. Verify its disk health and test a restore before switching live traffic.
+- **The second 500 GB MacBook** is the replacement Ubuntu server. Ubuntu Server is installed, Ethernet and SSH login work, and the expanded root filesystem has about 370 GiB free. The original storage laptop continues to host the Windows Media Archive. Test application recovery on the replacement before switching live traffic.
 - **The 930 GB Windows laptop** will receive the nightly encrypted incremental backups. Confirm the destination folder, free space, and overnight availability. Cron and custom scripts will run on Ubuntu and send backups to the Windows destination.
 - **Oracle** is excluded from this backup plan.
 
